@@ -7,10 +7,6 @@ export default function Hero({ ready }) {
       {/* Left — narrative */}
       <div className="hero-text">
 
-        <p className="hero-eyebrow" style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.4s ease 0.85s' }}>
-          Ethan Yip &nbsp;·&nbsp; New York &nbsp;·&nbsp; 2026
-        </p>
-
         <h1
           className="hero-headline"
           style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.6s ease 0.4s' }}
@@ -25,6 +21,12 @@ export default function Hero({ ready }) {
             </span>
           ))}
         </h1>
+
+        <p className="hero-tagline" style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.5s ease 0.7s' }}>
+          <em>Cogito, ergo sum</em> — I think, therefore I am. (Descartes)
+        </p>
+
+        <div className="hero-narrative-rule" style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.5s ease 0.9s' }} />
 
         <div className="hero-narrative" style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.5s ease 1s' }}>
           <p>

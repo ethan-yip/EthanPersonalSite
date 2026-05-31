@@ -17,10 +17,7 @@ const Moon = () => (
 
 export default function Nav({ theme, onToggleTheme, ready }) {
   return (
-    <nav
-      className="nav"
-      style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.4s ease 0.9s' }}
-    >
+    <nav className="nav">
       <a href="#home" className="nav-logo">EY</a>
 
       <div className="nav-links">
