@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SERIES = [
   {
     name: 'The Hidden Curriculum of Leadership',
     author: 'Ethan Yip',
     essays: [
-      { num: '0', title: 'Access Isn\'t Enough' },
-      { num: '1', title: '—' },
+      { num: '1', title: 'Fault Lines', href: '/essays/faultlines' },
       { num: '2', title: '—' },
     ],
   },
@@ -35,18 +35,24 @@ function SeriesRow({ series }) {
         style={{ maxHeight: open ? bodyRef.current?.scrollHeight + 'px' : '0px' }}
       >
         <div className="series-meta">Authored by {series.author}</div>
-        {series.essays.map((e, i) => (
-          <div key={i} className="essay-row">
-            <span className="essay-num">Essay {e.num}</span>
-            <span
-              className="essay-title"
-              style={{ opacity: e.title === '—' ? 0.28 : 1 }}
-            >
-              {e.title === '—' ? e.title : <strong>{e.title}</strong>}
-            </span>
-            <span className="essay-badge">Draft</span>
-          </div>
-        ))}
+        {series.essays.map((e, i) => {
+          const inner = (
+            <>
+              <span className="essay-num">Essay {e.num}</span>
+              <span className="essay-title" style={{ opacity: e.title === '—' ? 0.28 : 1 }}>
+                {e.title === '—' ? e.title : <strong>{e.title}</strong>}
+              </span>
+              <span className="essay-badge">{e.href ? 'Read →' : 'Draft'}</span>
+            </>
+          );
+          return e.href ? (
+            <Link key={i} to={e.href} className="essay-row">
+              {inner}
+            </Link>
+          ) : (
+            <div key={i} className="essay-row">{inner}</div>
+          );
+        })}
       </div>
     </div>
   );
