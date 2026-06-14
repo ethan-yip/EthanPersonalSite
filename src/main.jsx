@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import Faultlines from './pages/Faultlines.jsx'
+import ByInvitationOnly from './pages/ByInvitationOnly.jsx'
 import ScrollToTop from './ScrollToTop.jsx'
 
 createRoot(document.getElementById('root')).render(
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/essays/faultlines" element={<Faultlines />} />
+        <Route path="/essays/byinvitationonly" element={<ByInvitationOnly />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
