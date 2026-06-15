@@ -118,7 +118,6 @@ export default function UltimateOutsideInsider() {
               <div className="essay-title-aside reveal">
                 <div className="essay-title-aside-label">On</div>
                 <div className="essay-title-aside-desc">
-                  Coming soon.
                 </div>
               </div>
             </div>
@@ -135,17 +134,7 @@ export default function UltimateOutsideInsider() {
         {/* ── Body ─────────────────────────────────── */}
         <div className="essay-body">
 
-          <p className="essay-p reveal">
-            Coming soon.
-          </p>
-
         </div>
-
-        {/* ── Footer ───────────────────────────────── */}
-        <footer className="essay-footer">
-          <div className="essay-footer-series">Essay 3 of 10: The Hidden Curriculum of Leadership</div>
-          <Link to="/" className="essay-footer-home">← Back to home</Link>
-        </footer>
 
       </article>
     </>
