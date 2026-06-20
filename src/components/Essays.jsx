@@ -7,7 +7,7 @@ const SERIES = [
     author: 'Ethan Yip',
     essays: [
       { num: '1', title: 'Fault Lines', href: '/essays/faultlines' },
-      { num: '2', title: 'By Invitation Only' },
+      { num: '2', title: 'By Invitation Only', href: '/essays/byinvitationonly' },
     ],
   },
 ];
