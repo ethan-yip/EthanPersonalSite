@@ -484,6 +484,10 @@ a.essay-row { cursor: pointer; }
 [data-theme="dark"] .status-review .research-badge-dot { background: #D4A820; }
 [data-theme="dark"] .status-published { color: #54B05A; background: rgba(84,176,90,0.1); }
 [data-theme="dark"] .status-published .research-badge-dot { background: #54B05A; }
+.status-progress { color: #1a5fa8; background: rgba(26,95,168,0.08); }
+.status-progress .research-badge-dot { background: #1a5fa8; }
+[data-theme="dark"] .status-progress { color: #5BA3E8; background: rgba(91,163,232,0.1); }
+[data-theme="dark"] .status-progress .research-badge-dot { background: #5BA3E8; }
 
 .research-paper-title { font-family: var(--font-d); font-size: clamp(16px, 1.7vw, 22px); font-weight: 400; color: var(--text); line-height: 1.25; margin-bottom: 8px; }
 .research-paper-meta { font-size: 11px; color: var(--faint); margin-bottom: 10px; letter-spacing: 0.02em; }
