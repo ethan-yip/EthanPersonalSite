@@ -6,7 +6,7 @@ const PAPERS = [
     status: 'progress',
     statusLabel: 'In Progress · May 2026',
     title: 'PRISM: Predicting and Repairing Instability in SAE Manifolds',
-    meta: 'Principal Investigator · Substrate Labs · ISEF 2027 / ICLR / NeurIPS',
+    meta: 'Primary Author',
     desc: 'Language models fail on many prompts not because they lack knowledge, but because the prompt sits in the wrong part of their internal geometry. PRISM uses sparse autoencoder encoder boundary proximity to predict which prompts will cause unstable feature activation before any answer is produced — then rewrites those prompts to stabilize their internal pathway and recover the lost accuracy.',
     tags: ['Sparse Autoencoders', 'Mechanistic Interpretability', 'Gemma Scope', 'Gemma-2-2B', 'Prompt Geometry'],
   },
