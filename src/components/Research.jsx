@@ -4,7 +4,7 @@ const PAPERS = [
   {
     year: '2026',
     status: 'progress',
-    statusLabel: 'In Progress · May 2026 – TBF',
+    statusLabel: 'In Progress · May 2026',
     title: 'PRISM: Predicting and Repairing Instability in SAE Manifolds',
     meta: 'Principal Investigator · Substrate Labs · ISEF 2027 / ICLR / NeurIPS',
     desc: 'Language models fail on many prompts not because they lack knowledge, but because the prompt sits in the wrong part of their internal geometry. PRISM uses sparse autoencoder encoder boundary proximity to predict which prompts will cause unstable feature activation before any answer is produced — then rewrites those prompts to stabilize their internal pathway and recover the lost accuracy.',
