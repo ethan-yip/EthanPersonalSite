@@ -181,7 +181,7 @@ export default function ByInvitationOnly() {
           </p>
 
           <p className="essay-p reveal">
-            However, every <em>exceptional</em> team was built the exact opposite way. Closed networks, warm introductions, and very deliberate decisions about who is allowed to be near the vision. The invitation was never open. The filter was and always will be there. The only question is whether you ran it on purpose or not.
+            And yet, every <em>exceptional</em> team was built the exact opposite way. Closed networks, warm introductions, and very deliberate decisions about who gets near the vision. The invitation was never open. The filter was and always will be there. The only question is whether you ran it on purpose or not.
           </p>
 
           <p className="essay-p reveal">
@@ -218,7 +218,7 @@ export default function ByInvitationOnly() {
           </p>
 
           <p className="essay-p reveal">
-            The same thing runs through old money circles, through the networks that move serious capital, through rooms I have only recently had the chance to observe. People cluster not just because of shared taste but because the room shapes what is visible: what risks feel possible, what timescale feels normal. The invitation is into a way of seeing, not just a seat at the table.
+            The same thing runs through old money circles, through the networks that move serious capital, through rooms I have only recently had the chance to observe. People cluster not just because of shared taste but because the room shapes what is visible. What risks feel possible, what timescale feels normal. The invitation is into a way of seeing, not just a seat at the table.
           </p>
 
           <ImgSlot
@@ -266,11 +266,11 @@ export default function ByInvitationOnly() {
           </p>
 
           <p className="essay-p reveal">
-            I have personally found myself guilty of this. And I think it's a broad human thing: we calibrate to the people around us and shift our expectations to protect ourselves. Cialdini calls it being driven by social proof. Others call it{' '}
+            I have personally caught myself doing this, and I think it's a broader human thing: we calibrate to the people around us and quietly shift our expectations to protect ourselves.{' '}
             <Src href="https://en.wikipedia.org/wiki/Asch_conformity_experiments">
-              normative influence
+              Asch's conformity experiments
             </Src>
-            . Whatever you call it, you will have a team that either keeps the bar high and executes there, or slowly sinks into the abyss.
+            {' '}showed it in a lab. You'll see it in your team. Either the bar stays high and people execute there, or the room slowly sinks into the abyss.
           </p>
 
           <p className="essay-p reveal">
@@ -279,23 +279,6 @@ export default function ByInvitationOnly() {
 
           <p className="essay-p reveal">
             Look at the density of talent at Anthropic right now. That did not happen because they ran better interviews. It happened because the mission was written specifically enough that a certain kind of person felt it was addressed to them personally. A vague invitation attracts vague people, not because the candidates are wrong, but because the game wasn't made specific enough for the right ones to see themselves in it.
-          </p>
-
-          <ImgSlot
-            src={IMGS.marc}
-            alt="Marc Andreessen"
-            aspect="3/2"
-            objectPosition="center top"
-            caption="Marc Andreessen, co-founder of Andreessen Horowitz. Photo: TechCrunch / CC BY 2.0"
-            wide
-          />
-
-          <p className="essay-p reveal">
-            Marc Andreessen makes a point that fits here:{' '}
-            <Src href="https://pmarchive.com/guide_to_startups_part4.html">
-              hire for drive, curiosity, and ethics over raw intelligence
-            </Src>
-            . He explicitly rejects the Microsoft logic puzzle model and the Google PhD pipeline as reliable predictors of company success.
           </p>
 
           <p className="essay-p reveal">
@@ -321,7 +304,7 @@ export default function ByInvitationOnly() {
           </p>
 
           <p className="essay-p reveal">
-            B players change the room the same way A players do, just in the other direction. Standards that felt fixed start to feel negotiable. Problems that an A player would have surfaced in week one go unnamed for months. The things that made the room exceptional begin to feel like too much rather than just normal, and over time the people around them start adjusting down to meet the new ambient level. This isn't a character judgment on anyone. It is just how environments work. The room wins, eventually.
+            B players change the room the same way A players do, just in the other direction. Standards that felt fixed start to feel negotiable. Problems that an A player would have surfaced in week one go unnamed for months. The things that made the room exceptional begin to feel like too much rather than just normal, and over time the people around them start adjusting down to meet the new ambient level. It is just how environments work. The room wins, eventually.
           </p>
 
           <p className="essay-p reveal">
@@ -329,48 +312,48 @@ export default function ByInvitationOnly() {
           </p>
 
           <p className="essay-p reveal">
-            The encouraging part of this is that B players in a room of A players can actually become A players themselves. Put someone in an environment where the standard is high enough and the environment does a lot of the lifting. Elite institutions have known this for a long time. The classroom is the product.
+            The encouraging part is that B players in a room of A players can actually become A players themselves. Put someone in an environment where the standard is high enough and the environment does a lot of the lifting. Elite institutions have known this for a long time. The classroom is the product.
           </p>
 
           <p className="essay-p reveal">
-            None of this means B players are simply bad people or bad hires. Sometimes the person you are calling a B player just sees the problem differently, and that perspective is worth having in the room. The issue is not the individual. It is what happens when too many people who don't share the same alignment start shaping the environment together. At that point it stops being a diversity of perspective and starts being a drift in direction, and nobody can quite explain how you got there.
+            None of this is a character judgment on anyone. Sometimes the person you're calling a B player just sees the problem differently, and that perspective is worth having in the room. The issue isn't the individual. It's what happens when too many people without shared alignment start shaping the environment together. At that point it stops being a diversity of perspective and starts being a drift in direction, and nobody can quite explain how you got there.
           </p>
 
           {/* ── Section IV ─────────────────────────── */}
           <SectionHead
             marker="IV"
-            title="What believers and executors do to the invitation."
+            title="What the invitation cannot filter if it's wrong."
           />
 
           <p className="essay-p reveal">
-            There are only so many believers, and the hard part isn't finding them. It is that in an interview, genuine belief and a good performance of belief look almost identical.
+            There are only so many believers, and the hard part isn't finding them. It is that in an interview, genuine belief and a good performance of belief look almost identical. A vague invitation can't tell the difference. It just selects for people who perform belief well enough to get through the room.
           </p>
 
           <p className="essay-p reveal">
-            Believers and paid executors aren't different performance tiers. They are people playing different games on different timescales, and when a genuine fork appears, they make different decisions. A believer is building toward an end state. A paid executor is building toward the next deliverable. Those two visions can produce the same behavior for months before anyone notices the divergence.
+            Believers and paid executors aren't different performance tiers. They are people playing different games on different timescales. A believer is building toward an end state. A paid executor is building toward the next deliverable. Those two orientations can produce identical behavior for months before the divergence surfaces.
           </p>
 
           <p className="essay-p reveal">
-            The motive misread is the specific version of this that founders almost never catch in time. Instead, it shows up in direction, in what someone prioritizes when no one is forcing them to, in what they get excited about between formal conversations.
-          </p>
-
-          <p className="essay-p reveal">
-            Jason Xu and Ruoyu Xu at Resonance, cousins who have been building together since elementary school, are an extreme version of what aligned timescales actually look like at the founding level. Not because of the family relationship, but because decades of shared history likely means the game between them is settled before anyone sits down.{' '}
-            <Src href="https://hbr.org/2013/12/the-founders-dilemma">
-              Noam Wasserman at Harvard found that 65% of high-potential startups fail from co-founder conflict
-            </Src>
-            . Most of that is essentially two people who accepted different invitations to the same thing, and never figured out how to surface the divergence before it cost them everything.
+            The motive misread is the version of this that founders almost never catch in time. It doesn't show up in output. It shows up in direction — in what someone prioritizes when no one is watching, in what they get excited about between formal conversations. You rarely know which one you got in the meeting itself.
           </p>
 
           <Pullquote>
             You learn more in the ten minutes after a meeting than in the meeting itself.
           </Pullquote>
 
+          <p className="essay-p reveal">
+            Jason Xu and Ruoyu Xu at Resonance, cousins who have been building together since elementary school, are an extreme version of what aligned timescales look like at the founding level. Not because of the family relationship, but because decades of shared history means the game between them is probably settled before anyone sits down.{' '}
+            <Src href="https://hbr.org/2013/12/the-founders-dilemma">
+              Noam Wasserman at Harvard found that 65% of high-potential startups fail from co-founder conflict.
+            </Src>
+            {' '}Most of that is two people who accepted different invitations to the same thing and never surfaced the divergence before it cost them everything.
+          </p>
+
           {/* ── Pivot ──────────────────────────────── */}
           <SectionHead title="Why does this matter to you as a leader, founder, or investor?" />
 
           <p className="essay-p reveal">
-            Every team is already, in one way or another, by invitation only. The meritocracy story is more comfortable, and easier to put in a pitch deck. But it is not entirely wrong either. Merit does matter. But merit still has to get into the room to matter. Who gets evaluated, by what standard, and in front of whom are all questions about the invitation before they are questions about merit. The filter is always there, running on whatever criteria you established, on purpose or not.
+            Every team is already, in one way or another, by invitation only. The meritocracy story is more comfortable and easier to put in a pitch deck, but merit still has to get into the room to matter. Who gets evaluated, by what standard, and in front of whom are all questions about the invitation before they're questions about merit. The filter is always running, on whatever criteria you established, on purpose or not.
           </p>
 
           <p className="essay-p reveal">
@@ -389,11 +372,11 @@ export default function ByInvitationOnly() {
           </p>
 
           <p className="essay-p reveal">
-            The mismatch that surfaced was almost invisible at first. Nothing explicitly wrong was being done. What emerged slowly was a difference in direction: expanding a free user base as wide as possible versus protecting the roughly two hundred users who were driving most of the revenue. Both are real strategies. But they belong to different games. One builds toward a fundraising story, toward acquisition metrics, toward the kind of growth that looks good in a deck. The other builds toward the users who notice when growth features start crowding out the core experience, and the product begins to feel like it was built for someone else.
+            The mismatch was almost invisible at first. Nothing explicitly wrong was being done. What surfaced slowly was a difference in direction: expanding a free user base as wide as possible versus protecting the roughly two hundred users who were driving most of the revenue. Both are legitimate strategies. But they belong to different games. One builds toward a fundraising story, toward acquisition metrics, toward the kind of growth that looks good in a deck. The other builds toward the users who notice when the product starts to feel like it was built for someone else.
           </p>
 
           <p className="essay-p reveal">
-            What I didn't expect was where the first sign originated. It didn't come from inside the team. It came from the users. The devoted ones sensed the shift in direction before we had named it internally. They felt the product changing timescale and started leaving. The room's perception had already moved. Our conversations just hadn't caught up yet.
+            What I didn't expect was where the first sign came from. It didn't come from inside the team. It came from the users. The devoted ones sensed the shift before we had named it internally. They felt the product changing timescale and started leaving. The room's perception had already moved. Our conversations just hadn't caught up yet.
           </p>
 
           <p className="essay-p reveal">
@@ -410,7 +393,7 @@ export default function ByInvitationOnly() {
           <p className="essay-p reveal">
             If the same misread keeps happening with different faces, you haven't written the invitation specific enough about the game you are playing.
             <br /><br />
-            Good things take time. And as I mentioned earlier, Naval said it best: <em>play long-term games with long-term people.</em> And long-term people need an invitation that was never truly about the role.
+            Good things take time. Naval's line keeps coming back to me: <em>play long-term games with long-term people.</em> Long-term people need an invitation that was never truly about the role.
             <br /><br />
             The best rooms that you have watched, that you are entering, and that you will build are all constructed in the same way:
             <br /><br />
