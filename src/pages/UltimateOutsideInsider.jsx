@@ -148,7 +148,7 @@ export default function UltimateOutsideInsider() {
             </div>
 
             <div className="essay-title-block">
-              <h1 className="essay-display-title reveal" style={{ fontSize: 'clamp(36px, 5.2vw, 78px)' }}>
+              <h1 className="essay-display-title reveal" style={{ fontSize: 'clamp(30px, 4vw, 62px)', lineHeight: 1.08 }}>
                 The Ultimate Outside Insider
               </h1>
               <div className="essay-title-aside reveal">
@@ -183,13 +183,13 @@ export default function UltimateOutsideInsider() {
           </p>
 
           <p className="essay-p reveal">
-            Walk into any room of founders and they will sound remarkably similar. Same vocabulary, same mental models, same frameworks for evaluating markets and talking to investors. Walk into a room of VCs and the pattern repeats. Same thesis structures, same portfolio logic, same language around conviction and category definition. This is not a coincidence. Most of them read the same playbooks, followed the same programs, learned the game the same way.{' '}
-            <Src href="https://en.wikipedia.org/wiki/James_Dyson">James Dyson</Src>
-            , whose engineering philosophy became one of the most imitated in product design, said it plainly: <em>be different for the sake of being different.</em> Because the person who starts from the same place as everyone else ends up in the same place as everyone else.
+            Walk into any room of founders and they will sound remarkably similar. Same vocabulary, same mental models, same frameworks. Walk into a room of VCs and the pattern repeats. This is not a coincidence. Most of them read the same playbooks and learned the game the same way.{' '}
+            <Src href="https://en.wikipedia.org/wiki/James_Dyson">James Dyson</Src>{' '}
+            said it plainly: <em>be different for the sake of being different.</em> Because the person who starts from the same place as everyone else ends up in the same place.
           </p>
 
           <p className="essay-p reveal">
-            The part that never makes it into "learn by building" is the sequence. Most people build with the rulebook in hand. By the time they start, they are building what everyone who read the same manual built. The people who actually changed the games they entered almost never did this first.
+            What never makes it into "learn by building" is the sequence. The people who actually changed the games they entered almost never started with the rulebook.
           </p>
 
           <p className="essay-p reveal">
