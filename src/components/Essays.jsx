@@ -8,6 +8,7 @@ const SERIES = [
     essays: [
       { num: '1', title: 'Fault Lines', href: '/essays/faultlines' },
       { num: '2', title: 'By Invitation Only', href: '/essays/byinvitationonly' },
+      { num: '3', title: 'The Ultimate Outside Insider', href: '/essays/ultimateoutsideinsider' },
     ],
   },
 ];
