@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import Cursor from '../components/Cursor';
 import './Faultlines.css';
 
 const Sun = () => (
@@ -119,7 +118,7 @@ export default function ByInvitationOnly() {
 
   return (
     <>
-      <Cursor />
+      <div className="bg-field" aria-hidden="true" />
 
       {/* Reading progress bar */}
       <div className="reading-bar" style={{ transform: `scaleX(${progress})` }} />

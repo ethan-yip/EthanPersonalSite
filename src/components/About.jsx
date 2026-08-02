@@ -1,108 +1,57 @@
-import { useEffect, useRef, useState } from 'react';
-
-const STATS = [
-  { end: 20,  suffix: '+', label: 'Investor\nPartners' },
-  { end: 8,   suffix: '%', label: 'HTSI\nAcceptance Rate' },
-  { end: 250, suffix: 'M+', label: 'AUM Supported\n(LvlUp)' },
-  { end: 4,   suffix: '',  label: 'Continents\nReached' },
+const NOW = [
+  { org: 'Resonance', what: 'Chief of Staff, Engineering & Technology', when: '2026', href: 'https://rsnc.ai' },
+  { org: 'Substrate Labs', what: 'Research — Mechanistic Interpretability', when: '2026', href: 'https://substrate-labs.org' },
+  { org: 'HTSI Global', what: 'Director — Founder Ecosystems', when: '2025', href: null },
+  { org: 'United Nations', what: 'Youth Delegate — ECOSOC', when: '2025', href: null },
+  { org: 'LvlUp Ventures', what: 'VC in Residence — AI & Software', when: '2025', href: null },
+  { org: 'Amazon Web Services', what: 'Machine Learning — Former', when: '2026', href: null },
 ];
 
-const TAGS = [
-  'Python', 'PyTorch', 'React', 'SwiftUI', 'Flutter',
-  'Firebase', 'MongoDB', 'English (Native)', 'Mandarin',
-];
-
-function CountUp({ end, suffix, active }) {
-  const [val, setVal] = useState(0);
-  const rafRef = useRef(null);
-
-  useEffect(() => {
-    if (!active) return;
-    const duration = 1400;
-    const start = performance.now();
-    const tick = now => {
-      const t = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      setVal(Math.round(eased * end));
-      if (t < 1) rafRef.current = requestAnimationFrame(tick);
-    };
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [active, end]);
-
-  return <>{val}{suffix}</>;
+function NowItem({ org, what, when, href }) {
+  const inner = (
+    <>
+      <span className="now-role">
+        <span className="org">{org}</span>
+        <span className="what">{what}</span>
+      </span>
+      <span className="now-when">{when}</span>
+    </>
+  );
+  return href
+    ? <a className="now-item" href={href} target="_blank" rel="noopener noreferrer">{inner}</a>
+    : <div className="now-item">{inner}</div>;
 }
 
 export default function About() {
-  const sectionRef = useRef(null);
-  const statsRef   = useRef(null);
-  const [statsActive, setStatsActive] = useState(false);
-
-  useEffect(() => {
-    const reveals = sectionRef.current?.querySelectorAll('.reveal') ?? [];
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
-    );
-    reveals.forEach(el => obs.observe(el));
-
-    const statsObs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setStatsActive(true); statsObs.disconnect(); } },
-      { threshold: 0.3 }
-    );
-    if (statsRef.current) statsObs.observe(statsRef.current);
-
-    return () => { obs.disconnect(); statsObs.disconnect(); };
-  }, []);
-
   return (
-    <section id="about" ref={sectionRef}>
-      <div className="container">
-        <div className="section-wrap">
-          <span className="section-bg-num">01</span>
+    <section id="about" className="section">
+      <div className="wrap">
+        <div className="sec-head reveal">
+          <h2 className="sec-title">About</h2>
+        </div>
 
-          <div className="section-label reveal">
-            <span className="section-num">01</span>
-            <span className="section-rule" />
-            About
+        <div className="about-grid">
+          <div className="about-prose reveal">
+            <p>
+              Started coding games at 9. By 12, I was teaching CS to 50+ kids at my
+              middle school. At 15, I flew into SF alone with no plan and scaled from
+              zero to a team of 7 in a month.
+            </p>
+            <p>
+              Now I&rsquo;m Chief of Staff at <a href="https://rsnc.ai" target="_blank" rel="noopener noreferrer">Resonance</a>,
+              building emotional intelligence for humanoid agents. I research mechanistic
+              interpretability at <a href="https://substrate-labs.org" target="_blank" rel="noopener noreferrer">Substrate Labs</a> —
+              the geometric characterization of how large language models reason.
+            </p>
+            <p className="muted">
+              I also run HTSI Global, back early-stage AI founders, and represent youth
+              at the United Nations. Philosophy is the lens I bring to all of it.
+            </p>
           </div>
 
-          <div className="about-grid">
-            <div className="about-text">
-              <p className="reveal reveal-delay-1">
-                I started as an operator. <strong>Built things, broke things</strong>, flew into SF alone
-                with no real plan and went zero to one in four weeks. Along the way I've worn a lot of
-                hats: early startup founder, engineer, VC, mentor, advisor, hackathon organizer.
-              </p>
-              <p className="reveal reveal-delay-2">
-                Now I run <strong>HTSI Global</strong> — a competitive startup program with an 8%
-                acceptance rate, working with 20+ investor sponsors and institutional partners
-                across Asia, Africa, LATAM, and North America. Recognized by UNESCO, the Learning
-                Planet Institute, and UN University. Aligned with UN SDGs 4 and 9.
-              </p>
-              <p className="reveal reveal-delay-3">
-                Beyond that: sourcing AI deals at <strong>LvlUp Ventures</strong> ($250M+ AUM),
-                incoming <strong>ML Engineer at AWS</strong> (Summer 2026), and representing youth
-                perspectives at the <strong>UN ECOSOC Youth Forum</strong>. I also conduct ML research —
-                my current paper on geometric characterization of LLM reasoning manifolds is under
-                review at the ICML Mechanistic Interpretability Workshop.
-              </p>
-
-              <div className="about-tags reveal reveal-delay-4">
-                {TAGS.map(t => <span key={t} className="about-tag">{t}</span>)}
-              </div>
-            </div>
-
-            <div ref={statsRef} className="about-stats reveal reveal-delay-2">
-              {STATS.map((s, i) => (
-                <div key={i} className="stat">
-                  <div className="stat-num">
-                    <CountUp end={s.end} suffix={s.suffix} active={statsActive} />
-                  </div>
-                  <div className="stat-label" style={{ whiteSpace: 'pre-line' }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
+          <div className="now reveal d1">
+            <div className="now-title lbl">Currently</div>
+            {NOW.map(x => <NowItem key={x.org} {...x} />)}
           </div>
         </div>
       </div>

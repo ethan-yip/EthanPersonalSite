@@ -1,53 +1,37 @@
-import { useEffect, useRef } from 'react';
-
 export default function Contact() {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const els = ref.current?.querySelectorAll('.reveal') ?? [];
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.1 }
-    );
-    els.forEach(el => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
-
   return (
-    <section id="contact" className="contact" ref={ref}>
-      <h2 className="contact-heading reveal">
-        Building something <em>ambitious?</em>
-      </h2>
-      <p className="contact-sub reveal">
-        Founder, investor, researcher, or someone with a weird idea — I want to hear from you.
-      </p>
+    <section id="contact" className="section">
+      <div className="wrap">
+        <div className="sec-head reveal">
+          <h2 className="sec-title">Contact</h2>
+        </div>
 
-      <div className="contact-links">
-        <a href="mailto:ethanyip28@gmail.com" className="contact-link reveal reveal-d1">
-          <div>
-            <div className="contact-link-label">Email</div>
-            <div className="contact-link-value">ethanyip28@gmail.com</div>
-          </div>
-          <span className="contact-link-arrow">↗</span>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/yip-ethan"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="contact-link reveal reveal-d2"
-        >
-          <div>
-            <div className="contact-link-label">LinkedIn</div>
-            <div className="contact-link-value">linkedin.com/in/yip-ethan</div>
-          </div>
-          <span className="contact-link-arrow">↗</span>
-        </a>
+        <h3 className="contact-head reveal">Let&rsquo;s build<br />something.</h3>
+
+        <div className="contact-rows reveal d1">
+          <a className="contact-row" href="https://mail.google.com/mail/?view=cm&fs=1&to=ethan@rsnc.ai" target="_blank" rel="noopener noreferrer">
+            <span className="k">Resonance</span>
+            <span className="v">ethan@rsnc.ai</span>
+            <span className="a">↗</span>
+          </a>
+          <a className="contact-row" href="https://mail.google.com/mail/?view=cm&fs=1&to=ethan-yip@substrate-labs.org" target="_blank" rel="noopener noreferrer">
+            <span className="k">Research</span>
+            <span className="v">ethan-yip@substrate-labs.org</span>
+            <span className="a">↗</span>
+          </a>
+          <a className="contact-row" href="https://www.linkedin.com/in/yip-ethan" target="_blank" rel="noopener noreferrer">
+            <span className="k">LinkedIn</span>
+            <span className="v">/in/yip-ethan</span>
+            <span className="a">↗</span>
+          </a>
+        </div>
+
+        <div className="footer reveal d2">
+          <span>© 2026 Ethan Yip</span>
+          <span>Builder · Researcher · Investor</span>
+          <span>New York</span>
+        </div>
       </div>
-
-      <footer className="footer">
-        <span className="footer-mono">EY</span>
-        <span className="footer-copy">© 2026 Ethan Yip</span>
-      </footer>
     </section>
   );
 }

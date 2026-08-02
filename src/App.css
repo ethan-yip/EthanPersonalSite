@@ -1,4 +1,3 @@
-/* App-level layout */
-#root {
-  min-height: 100vh;
-}
+/* App-level composition styles live in index.css (design system).
+   Kept intentionally minimal. */
+#root { min-height: 100vh; isolation: isolate; }

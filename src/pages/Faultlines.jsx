@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import Cursor from '../components/Cursor';
 import './Faultlines.css';
 
 const Sun = () => (
@@ -18,19 +17,26 @@ const Moon = () => (
   </svg>
 );
 
-function useReadingProgress() {
-  const [progress, setProgress] = useState(0);
+/*
+  Reading progress is driven by CSS scroll-timeline (see Faultlines.css).
+  Where scroll-timeline is unsupported, this effect writes --progress from a
+  single passive scroll listener — no component state, no requestAnimationFrame.
+*/
+function useReadingProgressFallback() {
   useEffect(() => {
+    const root = document.documentElement;
     const update = () => {
-      const el = document.documentElement;
-      const scrolled = el.scrollTop;
-      const total = el.scrollHeight - el.clientHeight;
-      setProgress(total > 0 ? scrolled / total : 0);
+      const total = root.scrollHeight - root.clientHeight;
+      root.style.setProperty('--progress', total > 0 ? String(root.scrollTop / total) : '0');
     };
+    update();
     window.addEventListener('scroll', update, { passive: true });
-    return () => window.removeEventListener('scroll', update);
+    window.addEventListener('resize', update, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
   }, []);
-  return progress;
 }
 
 /*
@@ -109,7 +115,7 @@ export default function Faultlines() {
   const [theme, setTheme] = useState(
     () => document.documentElement.getAttribute('data-theme') || 'light'
   );
-  const progress = useReadingProgress();
+  useReadingProgressFallback();
   const bodyRef = useRef(null);
 
   useEffect(() => {
@@ -128,10 +134,10 @@ export default function Faultlines() {
 
   return (
     <>
-      <Cursor />
+      <div className="bg-field" aria-hidden="true" />
 
       {/* Reading progress bar */}
-      <div className="reading-bar" style={{ transform: `scaleX(${progress})` }} />
+      <div className="reading-bar" />
 
       {/* Nav */}
       <nav className="nav">
@@ -410,7 +416,7 @@ export default function Faultlines() {
           </p>
 
           <p className="essay-p reveal">
-            I have sat across from a 13-year-old founder pitching VCs at a UN and HTSI event, and thought, genuinely, that this person might be remarkable someday. Not because of their traction. Because of how they thought about the problem. The moment we, as people of empowerment, measure that person by exclusively startup metrics instead of by who they are becoming, we have already drawn the fault line in exactly the wrong spot.
+            I have sat across from a 13-year-old founder pitching VCs at a United Nations and HTSI event, and thought, genuinely, that this person might be remarkable someday. Not because of their traction. Because of how they thought about the problem. The moment we, as people of empowerment, measure that person by exclusively startup metrics instead of by who they are becoming, we have already drawn the fault line in exactly the wrong spot.
           </p>
 
           {/* ── Personal ───────────────────────────── */}

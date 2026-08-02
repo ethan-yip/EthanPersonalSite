@@ -1,80 +1,65 @@
-import ImagePanel from './ImagePanel';
+import HeroCarousel from './HeroCarousel';
 
-export default function Hero({ ready }) {
+const INDEX = [
+  { n: '01', t: 'Resonance', y: 'Chief of Staff · 2026' },
+  { n: '02', t: 'Substrate Labs', y: 'Interpretability · 2026' },
+  { n: '03', t: 'HTSI Global × United Nations', y: 'Director · 2025' },
+];
+
+export default function Hero() {
   return (
-    <section id="home" className="hero">
-
-      {/* Left — narrative */}
-      <div className="hero-text">
-
-        <h1
-          className="hero-headline"
-          style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.6s ease 0.4s' }}
-        >
-          {"I build what I can't find.".split('').map((ch, i) => (
-            <span
-              key={i}
-              className="hero-headline-char"
-              style={{ display: ch === ' ' ? 'inline' : 'inline-block', whiteSpace: 'pre' }}
-            >
-              {ch}
-            </span>
-          ))}
-        </h1>
-
-        <p className="hero-tagline" style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.5s ease 0.7s' }}>
-          <em>Cogito, ergo sum</em> — I think, therefore I am. (Descartes)
-        </p>
-
-        <div className="hero-narrative-rule" style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.5s ease 0.9s' }} />
-
-        <div className="hero-narrative" style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.5s ease 1s' }}>
-          <p>
-            Started coding games at 9. By 12, I was teaching CS to 50+ kids at the Middle School.
-            At 15, I flew into SF alone with no plan, and scaled from zero to a team of 7 in a month.
-          </p>
-          <p>
-            Now I run <span className="highlight">HTSI Global</span>, a startup program
-            backing and mentoring founders across Asia, Africa, LATAM, and North America with the United Nations.
-          </p>
-          <p>
-            I source early-stage AI deals at <strong>LvlUp Ventures</strong>.{' '}
-            I represent youth at the <strong>UN ECOSOC Forum</strong> and <strong>UN General Assembly</strong>.{' '}
-            I'm joining <strong>Amazon Web Services</strong> for Machine Learning this summer.
-          </p>
-          <p>
-            I also do ML research — geometric characterization of LLM reasoning manifolds,
-            and broader work on how large language models think. Philosophy is the lens
-            I bring to all of it.{' '}
-            <strong><em>My essays connect that thinking to tech and leadership.</em></strong><span className="blink"> ░</span>
-          </p>
+    <header id="home" className="hero">
+      <div className="wrap">
+        <div className="hero-meta reveal">
+          <span className="lbl">Builder — Researcher — Investor</span>
+          <span className="lbl">New York · Est. 2026</span>
         </div>
 
-        <a
-          href="mailto:ethanyip28@gmail.com"
-          className="hero-email"
-          style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.4s ease 1.1s' }}
-        >
-          ethanyip28@gmail.com
-        </a>
+        <h1 className="hero-mega reveal d1">
+          <span className="line">I Build What</span>
+          <span className="line">I Can&rsquo;t <span className="red">Find</span></span>
+        </h1>
 
-        <nav className="hero-nav" style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.4s ease 1.2s' }}>
-          <a href="https://www.linkedin.com/in/yip-ethan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <span className="hero-nav-dot" />
-          <a href="#essays">Essays</a>
-          <span className="hero-nav-dot" />
-          <a href="#research">Research</a>
-          <span className="hero-nav-dot" />
-          <a href="#contact">Contact</a>
-        </nav>
+        <div className="hero-lower">
+          <div className="hero-info reveal d2">
+            <div className="hero-copy">
+              <p className="hero-statement">
+                Chief of Staff, Engineering &amp; Technology at{' '}
+                <a className="inline" href="https://rsnc.ai" target="_blank" rel="noopener noreferrer">Resonance</a> —
+                building emotional intelligence for humanoid agents.
+              </p>
+              <p className="hero-aside">
+                Outside work I read philosophy, keep up my Latin, and write essays. Usually
+                about the things that keep me up at night.
+              </p>
+            </div>
 
+            <ol className="hero-index">
+              {INDEX.map(x => (
+                <li key={x.t}>
+                  <span className="t">{x.t}</span>
+                  <span className="y">{x.y}</span>
+                </li>
+              ))}
+            </ol>
+
+            <div className="hero-links">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ethan@rsnc.ai" target="_blank" rel="noopener noreferrer">Email ↗</a>
+              <a href="https://www.linkedin.com/in/yip-ethan" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+              <a href="https://rsnc.ai" target="_blank" rel="noopener noreferrer">Resonance ↗</a>
+            </div>
+
+            <div className="hero-actions">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ethan@rsnc.ai" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Get in touch →</a>
+              <a href="#about" className="btn btn-ghost">About</a>
+            </div>
+          </div>
+
+          <div className="hero-media reveal d2">
+            <HeroCarousel />
+          </div>
+        </div>
       </div>
-
-      {/* Right — image panel */}
-      <div className="hero-panel" style={{ opacity: ready ? 1 : 0, transition: 'opacity 0.6s ease 0.7s' }}>
-        <ImagePanel />
-      </div>
-
-    </section>
+    </header>
   );
 }

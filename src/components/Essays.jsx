@@ -1,92 +1,46 @@
-import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const SERIES = [
+const ESSAYS = [
   {
-    name: 'The Hidden Curriculum of Leadership',
-    author: 'Ethan Yip',
-    essays: [
-      { num: '1', title: 'Fault Lines', href: '/essays/faultlines' },
-      { num: '2', title: 'By Invitation Only', href: '/essays/byinvitationonly' },
-      { num: '3', title: 'The Ultimate Outside Insider', href: '/essays/ultimateoutsideinsider' },
-    ],
+    no: '01', title: 'Fault Lines', href: '/essays/faultlines',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Ricciardo_Verstappen_Vettel_Spain_2016.jpg/960px-Ricciardo_Verstappen_Vettel_Spain_2016.jpg',
+    desc: 'What Toto Wolff and Mercedes get structurally right about blame, accountability, and high-performance culture — and how SF gets it backwards.',
+  },
+  {
+    no: '02', title: 'By Invitation Only', href: '/essays/byinvitationonly',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/San_Francisco_from_the_Marin_Headlands_in_March_2019.jpg/960px-San_Francisco_from_the_Marin_Headlands_in_March_2019.jpg',
+    desc: 'Why the most talent-dense teams — from Anthropic to the United Nations — are built the exact opposite of open, meritocratic hiring.',
+  },
+  {
+    no: '03', title: 'The Ultimate Outside Insider', href: '/essays/ultimateoutsideinsider',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/James_Dyson_4.jpg/960px-James_Dyson_4.jpg',
+    desc: 'Why every founder in SF starts to sound the same, and the discipline that protects the position worth holding.',
   },
 ];
 
-function SeriesRow({ series }) {
-  const [open, setOpen] = useState(false);
-  const bodyRef = useRef(null);
-
-  return (
-    <div className="series-block">
-      <button
-        className="series-header"
-        onClick={() => setOpen(o => !o)}
-        aria-expanded={open}
-      >
-        <span className="series-name">{series.name}</span>
-        <span className="series-toggle" style={{ transform: open ? 'rotate(45deg)' : 'rotate(0deg)' }}>
-          +
-        </span>
-      </button>
-
-      <div
-        ref={bodyRef}
-        className="series-body"
-        style={{ maxHeight: open ? bodyRef.current?.scrollHeight + 'px' : '0px' }}
-      >
-        <div className="series-meta">Authored by {series.author}</div>
-        {series.essays.map((e, i) => {
-          const inner = (
-            <>
-              <span className="essay-num">Essay {e.num}</span>
-              <span className="essay-title" style={{ opacity: e.title === '—' ? 0.28 : 1 }}>
-                {e.title === '—' ? e.title : <strong>{e.title}</strong>}
-              </span>
-              <span className="essay-badge">{e.href ? 'Read →' : 'Draft'}</span>
-            </>
-          );
-          return e.href ? (
-            <Link key={i} to={e.href} className="essay-row">
-              {inner}
-            </Link>
-          ) : (
-            <div key={i} className="essay-row">{inner}</div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
 export default function Essays() {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const els = ref.current?.querySelectorAll('.reveal') ?? [];
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.07 }
-    );
-    els.forEach(el => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
-
   return (
-    <section id="essays" className="essays" ref={ref}>
-      <div className="essays-top reveal">
-        <h2 className="essays-heading">Essays</h2>
-      </div>
+    <section id="essays" className="section">
+      <div className="wrap">
+        <div className="sec-head reveal">
+          <h2 className="sec-title">Essays</h2>
+          <p className="sec-sub">The Hidden Curriculum of Leadership — part personal notes, part research.</p>
+        </div>
 
-      <div className="reveal reveal-d1">
-        {SERIES.map((s, i) => <SeriesRow key={i} series={s} />)}
-      </div>
-
-      <div className="essays-footer reveal reveal-d2">
-        <span className="essays-footer-note">Get notified when they publish.</span>
-        <a href="mailto:ethanyip28@gmail.com?subject=Essay Updates" className="essays-notify">
-          Notify me →
-        </a>
+        <div className="essay-grid">
+          {ESSAYS.map((e, i) => (
+            <Link key={e.href} to={e.href} viewTransition className={`essay-card reveal d${i}`}>
+              <div className="essay-thumb">
+                <img src={e.img} alt={e.title} loading="lazy" decoding="async" />
+              </div>
+              <div className="essay-body">
+                <h3 className="essay-title">{e.title}</h3>
+                <p className="essay-desc">{e.desc}</p>
+                <span className="essay-cta">Read →</span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
