@@ -34,8 +34,10 @@
   src: url('/fonts/DepartureMono-Regular.woff2') format('woff2');
 }
 
-/* ─── TOKENS ────────────────────────────────────────────────────── */
-:root {
+/* ─── TOKENS ──────────────────────────────────────────────────────
+   Scoped to [data-os] so these NEVER leak onto the classic site, which
+   defines its own same-named variables (--bg, --fg, etc.) in index.css. */
+:root[data-os] {
   /* backgrounds — airy sky-dusk blues (dark glass keeps window text legible) */
   --bg-deep:      #0b1728;
   --bg:           #10203a;
@@ -80,13 +82,13 @@
   --glow: 0 0 10px rgba(120, 190, 255, 0.40);
 }
 
-/* accent cycling driven by data-accent on :root */
-:root[data-accent='blue']   { --accent: var(--blue);   --accent-2: var(--cyan);   }
-:root[data-accent='cyan']   { --accent: var(--cyan);   --accent-2: var(--blue);   }
-:root[data-accent='purple'] { --accent: var(--purple); --accent-2: var(--blue);   }
-:root[data-accent='pink']   { --accent: var(--pink);   --accent-2: var(--purple); }
-:root[data-accent='green']  { --accent: var(--green);  --accent-2: var(--teal);   }
-:root[data-accent='gold']   { --accent: var(--gold);   --accent-2: var(--cyan);   }
+/* accent cycling driven by data-accent on :root (scoped to the OS) */
+:root[data-os][data-accent='blue']   { --accent: var(--blue);   --accent-2: var(--cyan);   }
+:root[data-os][data-accent='cyan']   { --accent: var(--cyan);   --accent-2: var(--blue);   }
+:root[data-os][data-accent='purple'] { --accent: var(--purple); --accent-2: var(--blue);   }
+:root[data-os][data-accent='pink']   { --accent: var(--pink);   --accent-2: var(--purple); }
+:root[data-os][data-accent='green']  { --accent: var(--green);  --accent-2: var(--teal);   }
+:root[data-os][data-accent='gold']   { --accent: var(--gold);   --accent-2: var(--cyan);   }
 
 /* ─── RESETS ────────────────────────────────────────────────────── */
 * { box-sizing: border-box; }

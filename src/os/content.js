@@ -13,8 +13,8 @@ export const META = {
 
 export const BIO = [
   'Started coding games at 9. By 12, I was teaching CS to 50+ kids at my middle school. At 15, I flew into SF alone with no plan and scaled from zero to a team of 7 in a month.',
-  'I grew up chasing the things I couldn’t find, and building them when they didn’t exist yet.',
-  'Outside the work, I read philosophy, keep up my Latin, and write essays — usually about the things that keep me up at night. Philosophy is the lens I bring to everything.',
+  "Now I'm Chief of Staff at Resonance (https://rsnc.ai), building emotional intelligence for humanoid agents. I research mechanistic interpretability at Substrate Labs (https://substrate-labs.org) — the geometric characterization of how large language models reason.",
+  'I also run HTSI Global, back early-stage AI founders, and represent youth at the United Nations. Philosophy is the lens I bring to all of it.',
 ];
 
 // A statement used for flavor in whoami / about.

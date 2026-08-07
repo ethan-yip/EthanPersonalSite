@@ -46,7 +46,7 @@ function NeofetchHero() {
           <div className="nf-cmds-label">commands</div>
           <div className="nf-cmds-grid">
             {[
-              ['about', 'bio & what I do'],
+              ['about', 'bio'],
               ['essays', 'writing'],
               ['research', 'papers'],
               ['contact', 'reach me'],
@@ -116,7 +116,7 @@ export default function Terminal() {
       const rows = [
         ['help', 'show this list'],
         ['whoami', 'identity + open the whoami window'],
-        ['about', 'bio & what I do now'],
+        ['about', 'bio'],
         ['essays', 'list essays · open essay <n> · essays <slug>'],
         ['research', 'papers & interpretability work'],
         ['contact', 'ways to reach me'],
