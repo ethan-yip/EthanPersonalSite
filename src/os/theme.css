@@ -1,0 +1,179 @@
+/* ══════════════════════════════════════════════════════════════════
+   yip-os — Tokyo Night / neo-Tokyo theme
+   Design tokens, base resets, fonts, and shared utilities.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ─── FONTS (self-hosted IBM Plex Mono) ─────────────────────────── */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/IBMPlexMono-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/IBMPlexMono-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/IBMPlexMono-Italic.woff2') format('woff2');
+}
+/* Departure Mono — pixel/bitmap display face for chrome, name & headings */
+@font-face {
+  font-family: 'Departure Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/DepartureMono-Regular.woff2') format('woff2');
+}
+
+/* ─── TOKENS ────────────────────────────────────────────────────── */
+:root {
+  /* backgrounds — airy sky-dusk blues (dark glass keeps window text legible) */
+  --bg-deep:      #0b1728;
+  --bg:           #10203a;
+  --bg-elev:      #172c4d;
+  --bg-highlight: #22406e;
+  --win-title:    #12233f;
+
+  /* foreground — snow white, sky-tinted */
+  --fg:      #eaf2ff;
+  --fg-dim:  #b6c9e8;
+  --comment: #6d84aa;
+
+  /* accents — vivid sky, ice, cloud lavender/pink, snow, peak-shadow */
+  --blue:    #4d90ff;   /* vivid sky */
+  --cyan:    #8fd8ff;   /* ice / atmosphere */
+  --purple:  #b9a7f0;   /* cloud lavender */
+  --magenta: #d79ae0;
+  --pink:    #f2a6c6;   /* cloud pink */
+  --green:   #8fd0b0;
+  --teal:    #7fd6d0;
+  --orange:  #ffc98a;
+  --yellow:  #ffe0a0;
+  --gold:    #ffd98a;
+  --red:     #f2758c;
+
+  --border: #24406a;
+
+  /* semantic accent — cycled by the `theme` terminal command.
+     Defaults to vivid sky blue to match the wallpaper. */
+  --accent:   var(--blue);
+  --accent-2: var(--cyan);
+
+  /* type — mac chrome uses a system sans; terminal/code stay mono */
+  --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, monospace;
+  --ui: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  --pixel: 'Departure Mono', 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* chrome */
+  --menubar-h: 34px;
+  --radius: 10px;
+  --shadow-win: 0 22px 60px -12px rgba(0, 0, 0, 0.78), 0 0 0 1px var(--border);
+  --glow: 0 0 10px rgba(120, 190, 255, 0.40);
+}
+
+/* accent cycling driven by data-accent on :root */
+:root[data-accent='blue']   { --accent: var(--blue);   --accent-2: var(--cyan);   }
+:root[data-accent='cyan']   { --accent: var(--cyan);   --accent-2: var(--blue);   }
+:root[data-accent='purple'] { --accent: var(--purple); --accent-2: var(--blue);   }
+:root[data-accent='pink']   { --accent: var(--pink);   --accent-2: var(--purple); }
+:root[data-accent='green']  { --accent: var(--green);  --accent-2: var(--teal);   }
+:root[data-accent='gold']   { --accent: var(--gold);   --accent-2: var(--cyan);   }
+
+/* ─── RESETS ────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Only apply the OS styling when the OS shell is mounted, so the /classic
+   route keeps its own look. Desktop.jsx adds `data-os` to <html>. */
+:root[data-os] body {
+  background: var(--bg-deep);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden; /* the desktop manages its own scroll regions */
+}
+
+:root[data-os] ::selection {
+  background: color-mix(in srgb, var(--accent) 40%, transparent);
+  color: #fff;
+}
+
+/* thin neo-Tokyo scrollbars */
+:root[data-os] ::-webkit-scrollbar { width: 10px; height: 10px; }
+:root[data-os] ::-webkit-scrollbar-track { background: transparent; }
+:root[data-os] ::-webkit-scrollbar-thumb {
+  background: var(--bg-highlight);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+:root[data-os] ::-webkit-scrollbar-thumb:hover { background: var(--comment); }
+
+/* mac-style headings: system sans, semibold. */
+:root[data-os] .app h1,
+:root[data-os] .app h2,
+:root[data-os] .app h3 {
+  font-family: var(--ui);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+/* ASCII art / preformatted stays monospaced. */
+:root[data-os] pre { font-family: var(--mono); }
+
+/* ─── UTILITIES ─────────────────────────────────────────────────── */
+.os-mono { font-family: var(--mono); }
+.os-pixel { font-family: var(--pixel); }
+
+.os-glow { text-shadow: var(--glow); }
+
+.os-link {
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.os-link:hover {
+  color: var(--cyan);
+  border-bottom-color: currentColor;
+}
+
+.os-dim { color: var(--comment); }
+
+/* very faint CRT scanline overlay — sits above the wallpaper, below windows */
+.os-scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.035) 3px,
+    rgba(0, 0, 0, 0.035) 3px
+  );
+  mix-blend-mode: multiply;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

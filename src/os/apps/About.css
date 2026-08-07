@@ -1,0 +1,180 @@
+/* ─── About app ─────────────────────────────────────────────────────
+   A macOS dark-mode "about" panel. Rendered inside a Window frame.
+   ─────────────────────────────────────────────────────────────────── */
+
+.about {
+  padding: 28px 32px 36px;
+  font-family: var(--ui);
+  color: var(--fg-dim);
+}
+
+/* header ─────────────────────────────────────────────────────────── */
+.about-head {
+  margin: 0 0 24px;
+}
+.about-head h1 {
+  font-family: var(--ui);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0 0 4px;
+}
+.about-head .about-role {
+  font-family: var(--ui);
+  color: var(--fg-dim);
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}
+.about-head .about-meta {
+  font-family: var(--ui);
+  color: var(--comment);
+  font-size: 13px;
+  margin: 8px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+.about-head .about-meta span::before {
+  content: '· ';
+  color: var(--comment);
+}
+.about-head .about-meta span:first-child::before { content: none; }
+
+/* two-column layout so it reads wide, not tall ───────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 28px 40px;
+  align-items: start;
+}
+.about-col { min-width: 0; }
+@media (max-width: 680px) {
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* bio ────────────────────────────────────────────────────────────── */
+.about-bio {
+  margin: 0 0 22px;
+}
+.about-bio p {
+  font-family: var(--ui);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg-dim);
+  margin: 0 0 14px;
+}
+.about-bio p:last-child { margin-bottom: 0; }
+.about-bio strong { color: var(--fg); font-weight: 600; }
+
+.about-link {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.about-link:hover {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* section label ──────────────────────────────────────────────────── */
+.about-label {
+  font-family: var(--ui);
+  color: var(--comment);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 10px;
+}
+
+/* currently — mac grouped list ───────────────────────────────────── */
+.about-now {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg-elev) 55%, transparent);
+  overflow: hidden;
+}
+.about-now-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 13px 16px;
+  border-top: 1px solid color-mix(in srgb, #fff 7%, transparent);
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.about-now-row:first-child { border-top: none; }
+.about-now-row:hover {
+  background: color-mix(in srgb, #fff 5%, transparent);
+}
+.about-now-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.about-now-org {
+  font-family: var(--ui);
+  color: var(--fg);
+  font-weight: 600;
+  font-size: 14px;
+}
+.about-now-what {
+  font-family: var(--ui);
+  color: var(--fg-dim);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.about-now-side {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.about-now-when {
+  font-family: var(--ui);
+  color: var(--comment);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.about-now-chevron {
+  font-family: var(--ui);
+  color: var(--comment);
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+a.about-now-row:hover .about-now-chevron {
+  color: var(--fg-dim);
+  transform: translateX(2px);
+}
+
+/* pull-quote / callout ───────────────────────────────────────────── */
+.about-quote {
+  margin: 0;
+  padding: 16px 20px;
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg-elev) 55%, transparent);
+}
+.about-quote blockquote {
+  font-family: var(--ui);
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--fg);
+}
+.about-quote figcaption {
+  font-family: var(--ui);
+  margin-top: 10px;
+  color: var(--comment);
+  font-size: 13px;
+}

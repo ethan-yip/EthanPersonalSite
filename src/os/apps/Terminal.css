@@ -1,0 +1,155 @@
+/* ─── Terminal emulator ─────────────────────────────────────────── */
+.term {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(120% 100% at 50% 0%, rgba(122, 162, 247, 0.05), transparent 60%),
+    var(--bg-deep);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg);
+  cursor: text;
+  position: relative;
+}
+
+/* soft text-glow CRT feel, kept subtle */
+.term-glow { text-shadow: 0 0 6px rgba(192, 202, 245, 0.18); }
+
+.term-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 16px 18px 8px;
+}
+
+.term-line { white-space: pre-wrap; word-break: break-word; }
+.term-line.spacer { height: 8px; }
+
+/* colored spans */
+.t-cyan   { color: var(--cyan); }
+.t-purple { color: var(--purple); }
+.t-blue   { color: var(--blue); }
+.t-green  { color: var(--green); }
+.t-yellow { color: var(--yellow); }
+.t-orange { color: var(--orange); }
+.t-pink   { color: var(--pink); }
+.t-red    { color: var(--red); }
+.t-teal   { color: var(--teal); }
+.t-dim    { color: var(--comment); }
+.t-accent { color: var(--accent); }
+.t-bold   { font-weight: 500; }
+.t-portrait { color: var(--cyan); text-shadow: 0 0 6px rgba(125, 207, 255, 0.3); }
+.t-banner {
+  margin: 0;
+  color: var(--purple);
+  white-space: pre;
+  line-height: 1.1;
+  text-shadow: 0 0 8px rgba(187, 154, 247, 0.3);
+}
+
+.term-a { color: var(--blue); text-decoration: none; border-bottom: 1px solid transparent; }
+.term-a:hover { color: var(--cyan); border-bottom-color: currentColor; }
+
+/* ── neofetch hero: portrait (left) + name banner & info (right) ── */
+.nf {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 4px 0 6px;
+}
+.nf-portrait {
+  margin: 0;
+  font-size: 9px;
+  line-height: 1.2; /* matches the 2:1 cell ratio the ASCII was generated for */
+  white-space: pre;
+  color: var(--cyan);
+  text-shadow: 0 0 6px rgba(127, 211, 255, 0.35);
+}
+.nf-right {
+  flex: 1 1 340px;
+  min-width: 240px;
+}
+.nf-banner {
+  margin: 0 0 10px;
+  font-size: 9px;
+  line-height: 1.03;
+  white-space: pre;
+  overflow-x: auto;
+  color: var(--accent);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.nf-id { margin-bottom: 2px; }
+.nf-role { margin-bottom: 12px; }
+.nf-kv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 3px 16px;
+  margin: 0 0 12px;
+}
+.nf-kv dt { color: var(--accent); }
+.nf-kv dd { margin: 0; color: var(--fg); }
+.nf-cmds { margin: 4px 0 10px; }
+.nf-cmds-label {
+  color: var(--comment);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.nf-cmds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 3px 18px;
+}
+.nf-cmd { display: flex; gap: 8px; align-items: baseline; }
+.nf-cmd .c { color: var(--accent); min-width: 62px; }
+.nf-cmd .d { color: var(--comment); }
+
+.nf-hint { margin-top: 2px; color: var(--comment); }
+
+@media (max-width: 640px) {
+  .nf-portrait { font-size: 8px; }
+  .nf-banner { font-size: 7px; }
+}
+
+/* prompt + input row */
+.term-inputline {
+  display: flex;
+  align-items: baseline;
+  padding: 2px 18px 18px;
+  flex: 0 0 auto;
+}
+.term-prompt { white-space: pre; }
+.term-user { color: var(--cyan); }
+.term-at   { color: var(--comment); }
+.term-host { color: var(--green); }
+.term-path { color: var(--purple); }
+.term-sep  { color: var(--comment); }
+
+.term-inputwrap { position: relative; flex: 1 1 auto; }
+.term-typed { white-space: pre-wrap; word-break: break-word; }
+
+/* blinking block cursor */
+.term-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  transform: translateY(2px);
+  background: var(--accent);
+  margin-left: 1px;
+  animation: term-blink 1.05s steps(1) infinite;
+}
+.term-cursor.hidden { animation: none; opacity: 0; }
+@keyframes term-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+/* the real input is offscreen but focusable */
+.term-hidden-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  left: -9999px;
+}

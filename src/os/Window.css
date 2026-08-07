@@ -1,0 +1,145 @@
+/* ─── Window chrome ─────────────────────────────────────────────── */
+.win {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-win);
+  overflow: hidden;
+  min-width: 280px;
+  min-height: 160px;
+}
+
+.win.is-maximized {
+  border-radius: 0;
+}
+
+/* title bar */
+.win-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 34px;
+  padding: 0 12px;
+  background: var(--win-title);
+  border-bottom: 1px solid var(--border);
+  cursor: default;
+  user-select: none;
+  flex: 0 0 auto;
+  font-family: var(--ui);
+}
+
+/* tile-snap preview highlight while dragging near an edge/corner */
+.snap-preview {
+  position: fixed;
+  z-index: 9998;
+  pointer-events: none;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent),
+    0 10px 40px -8px color-mix(in srgb, var(--accent) 50%, transparent);
+  transition: left 0.08s ease, top 0.08s ease, width 0.08s ease, height 0.08s ease;
+}
+
+.win-lights {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.win-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+  display: grid;
+  place-items: center;
+  font-size: 8px;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.55);
+}
+.win-light:hover { transform: scale(1.12); opacity: 1; }
+.win-light .glyph { opacity: 0; transition: opacity 0.12s ease; }
+.win-lights:hover .glyph { opacity: 1; }
+
+.win-light.close    { background: var(--red); }
+.win-light.minimize { background: var(--yellow); }
+.win-light.maximize { background: var(--green); }
+
+.win-title {
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--fg-dim);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 52px; /* balance the traffic lights so title reads centered */
+}
+
+.win-icon {
+  margin-right: 4px;
+  opacity: 0.85;
+}
+
+/* content region — matches the Terminal's dark backdrop */
+.win-body {
+  flex: 1 1 auto;
+  overflow: auto;
+  background:
+    radial-gradient(120% 100% at 50% 0%, rgba(122, 162, 247, 0.05), transparent 60%),
+    var(--bg-deep);
+  position: relative;
+}
+
+/* bottom-right resize handle */
+.win-resize {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  cursor: nwse-resize;
+  z-index: 3;
+  background: linear-gradient(
+    135deg,
+    transparent 0 45%,
+    var(--comment) 45% 55%,
+    transparent 55% 70%,
+    var(--comment) 70% 80%,
+    transparent 80%
+  );
+  opacity: 0.5;
+}
+.win-resize:hover { opacity: 0.9; }
+
+.win.dragging, .win.resizing { user-select: none; }
+.win.dragging .win-body, .win.resizing .win-body { pointer-events: none; }
+
+/* mobile: windows go fullscreen, no dragging */
+@media (max-width: 760px) {
+  .win {
+    left: 0 !important;
+    right: 0 !important;
+    top: var(--menubar-h) !important;
+    bottom: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
+  .win-titlebar { cursor: default; }
+  .win-resize { display: none; }
+}

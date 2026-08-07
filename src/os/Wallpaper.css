@@ -1,0 +1,47 @@
+/* ─── Desktop wallpaper: static painting + live canvas + scrim ──── */
+.wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #0b1220; /* fallback while the image decodes */
+}
+
+.wallpaper-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  /* very slow ken-burns drift so even the still frame feels alive */
+  animation: wp-drift 60s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes wp-drift {
+  from { transform: scale(1.06) translate3d(-0.6%, -0.4%, 0); }
+  to   { transform: scale(1.12) translate3d(0.6%, 0.6%, 0); }
+}
+
+.wallpaper-fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* darken edges + a faint cool wash so window text stays readable */
+.wallpaper-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(135% 115% at 50% 22%, rgba(10, 22, 45, 0) 55%, rgba(9, 18, 40, 0.34) 100%),
+    linear-gradient(180deg, rgba(14, 28, 55, 0.12) 0%, rgba(14, 28, 55, 0.02) 42%, rgba(9, 18, 40, 0.22) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wallpaper-img { animation: none; transform: scale(1.04); }
+}

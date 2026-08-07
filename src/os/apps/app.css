@@ -1,0 +1,232 @@
+/* ═══════════════════════════════════════════════════════════════════
+   App content — macOS dark-mode design system.
+   SF Pro (var--ui) everywhere; monospace only for <pre>/ascii. Grouped
+   lists, hairline separators, system-blue accents. Class names are kept
+   so the existing app components keep working.
+   ═══════════════════════════════════════════════════════════════════ */
+.app {
+  padding: 22px 24px 28px;
+  color: var(--fg);
+  font-family: var(--ui);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app h1, .app h2, .app h3 {
+  font-family: var(--ui);
+  line-height: 1.24;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.app h1 { font-size: 22px; font-weight: 700; margin: 0 0 4px; }
+.app h2 { font-size: 15px; font-weight: 600; margin: 24px 0 10px; }
+.app h3 { font-size: 13px; font-weight: 600; margin: 18px 0 8px; }
+
+.app p { margin: 0 0 13px; color: var(--fg-dim); }
+.app strong { color: var(--fg); font-weight: 600; }
+
+.app a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.app a:hover { color: var(--cyan); text-decoration: underline; text-underline-offset: 2px; }
+
+.app .muted { color: var(--comment); }
+
+/* small uppercase eyebrow label (mac section header) */
+.app .eyebrow,
+.app .app-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--comment);
+  margin: 0 0 8px;
+}
+
+/* ── grouped list (mac Settings style) ─────────────────────────── */
+.app-rows,
+.contact-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 4px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--bg-elev) 55%, transparent);
+}
+.app-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  padding: 12px 14px;
+  border-top: 1px solid color-mix(in srgb, #fff 7%, transparent);
+  align-items: baseline;
+  transition: background 0.14s ease;
+}
+.app-row:first-child { border-top: none; }
+.app-row:hover { background: color-mix(in srgb, #fff 5%, transparent); }
+.app-row .row-main { color: var(--fg); font-weight: 500; }
+.app-row .row-sub { color: var(--fg-dim); font-size: 13px; }
+.app-row .row-when { color: var(--comment); font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* ── tag / pill chips ──────────────────────────────────────────── */
+.app-tags, .paper-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.app-tag, .paper-chip {
+  font-family: var(--ui);
+  font-size: 11.5px;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  color: var(--fg-dim);
+}
+
+/* ── clickable list items (essays index) ───────────────────────── */
+.app-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg-elev) 55%, transparent);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background 0.14s ease, border-color 0.14s ease;
+}
+.app-item:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.app-item .item-no { color: var(--comment); margin-right: 10px; font-variant-numeric: tabular-nums; }
+.app-item .item-title { color: var(--fg); font-weight: 600; }
+.app-item .item-desc { color: var(--fg-dim); font-size: 13px; margin-top: 5px; }
+
+/* ── whoami / neofetch ─────────────────────────────────────────── */
+.neofetch {
+  display: flex;
+  gap: 26px;
+  padding: 24px;
+  flex-wrap: wrap;
+}
+.neofetch pre {
+  margin: 0;
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  line-height: 1.2; /* matches the 2:1 cell ratio the ASCII was generated for */
+  white-space: pre;
+}
+.neofetch .info { min-width: 240px; flex: 1; }
+.neofetch .info .banner {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.12;
+  margin: 0 0 10px;
+  white-space: pre;
+  overflow-x: auto;
+}
+.neofetch .info .tagline { color: var(--fg-dim); margin: 0 0 16px; font-size: 14px; }
+.kv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg-elev) 55%, transparent);
+  padding: 14px 16px;
+}
+.kv dt { color: var(--comment); font-size: 13px; }
+.kv dd { margin: 0; color: var(--fg); font-size: 13px; }
+.kv dd a { color: var(--blue); }
+
+/* ── Research window ───────────────────────────────────────────── */
+.research-head { margin-bottom: 22px; }
+.research .research-head h1 { color: var(--fg); font-size: 22px; margin: 0 0 6px; }
+.research-sub { color: var(--fg-dim); font-size: 14px; max-width: 60ch; margin: 0; }
+
+.paper-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 12px;
+}
+.paper {
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg-elev) 55%, transparent);
+}
+
+.paper-byline {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--comment);
+}
+.paper-byline .paper-year { color: var(--accent-2); }
+.paper-byline .paper-dash { color: var(--comment); }
+.paper-byline .paper-role { color: var(--comment); }
+
+.research .paper-title {
+  color: var(--fg);
+  font-family: var(--ui);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 8px;
+}
+.research .paper-title::before { content: none; }
+.paper-desc { color: var(--fg-dim); font-size: 13.5px; line-height: 1.55; margin: 0 0 12px; }
+
+/* ── Contact window ────────────────────────────────────────────── */
+.contact-head { margin-bottom: 20px; }
+.contact .contact-head h1 { color: var(--fg); font-size: 22px; margin: 0 0 6px; }
+.contact-sub { color: var(--fg-dim); font-size: 14px; margin: 0; }
+
+.contact-rows { margin-bottom: 20px; }
+.app .contact-row {
+  display: grid;
+  grid-template-columns: max-content 1fr auto;
+  gap: 14px;
+  align-items: baseline;
+  padding: 13px 16px;
+  border-top: 1px solid color-mix(in srgb, #fff 7%, transparent);
+  text-decoration: none;
+  transition: background 0.14s ease;
+}
+.app .contact-row:first-child { border-top: none; }
+.app .contact-row:hover { background: color-mix(in srgb, #fff 5%, transparent); }
+.contact-row .contact-k { color: var(--fg); font-weight: 500; font-size: 14px; }
+.contact-row .contact-v { color: var(--fg-dim); font-size: 13.5px; }
+.contact-row .contact-arrow { color: var(--comment); justify-self: end; transition: transform 0.15s ease; }
+.app .contact-row:hover .contact-arrow { color: var(--accent); transform: translateX(2px); }
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 4px 2px 18px;
+  border-bottom: 1px solid color-mix(in srgb, #fff 8%, transparent);
+}
+.app .contact-link { color: var(--blue); font-size: 13.5px; text-decoration: none; }
+.app .contact-link:hover { color: var(--cyan); text-decoration: underline; text-underline-offset: 2px; }
+
+.contact-footer { margin-top: 16px; color: var(--comment); font-size: 12px; }
